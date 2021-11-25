@@ -1,5 +1,6 @@
 const path = require(`path`)
 const chunk = require(`lodash/chunk`)
+const createFrontPage = require("./src/create-page/front-page")
 
 // This is a simple debugging tool
 // dd() will prettily dump to the terminal and kill the process
@@ -12,47 +13,11 @@ const chunk = require(`lodash/chunk`)
  * See https://www.gatsbyjs.com/docs/node-apis/#createPages for more info.
  */
 exports.createPages = async gatsbyUtilities => {
-  // Query our posts from the GraphQL server
-  const posts = await getPosts(gatsbyUtilities)
-  const pagesRequest = await gatsbyUtilities.graphql(`query GET_FRONT_PAGE {
-    wpPage(isFrontPage: {in: true}) {
-      id
-      title
-      uri
-      isFrontPage
-      homeFields {
-        title
-      }
-    }
-  }`)
-
-  // If there are no posts in WordPress, don't do anything
-  if (!posts.length) {
-    return
-  }
-  const page = pagesRequest.data.wpPage
-  // console.log(pagesRequest.data.allWpPage.edges)
-  // If there are posts, create pages for them
-  await createFrontPage({ page, gatsbyUtilities })
-  await createIndividualBlogPostPages({ posts, gatsbyUtilities })
+  await createFrontPage(gatsbyUtilities)
+  // await createIndividualBlogPostPages({ posts, gatsbyUtilities })
 
   // // And a paginated archive
   // await createBlogPostArchive({ posts, gatsbyUtilities })
-}
-
-const createFrontPage = async ({ page, gatsbyUtilities }) => {
-  console.log("page", page)
-  // Promise.all(
-  gatsbyUtilities.actions.createPage({
-    path: page.uri,
-    component: require.resolve(`./src/templates/front-page.js`),
-    context: {
-      id: page.id,
-      isFrontPage: page.isFrontPage,
-      fiels: page.homeFields,
-    },
-  })
-  // )
 }
 
 const createIndividualBlogPostPages = async ({ posts, gatsbyUtilities }) =>
