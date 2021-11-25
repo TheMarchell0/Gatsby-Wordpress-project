@@ -8,12 +8,15 @@ query GET_FRONT_PAGE {
     uri
     isFrontPage
     homeFields {
-       heroSection {
+      heroSection {
         bookACall
         description
-        fieldGroupName
         seeCases
-        title
+        title {
+          firstBlackText
+          secondRedText
+          thirdBlackText
+        }
         firstImage {
           sourceUrl
           altText
@@ -21,6 +24,36 @@ query GET_FRONT_PAGE {
         secondImage {
           sourceUrl
           altText
+        }
+      }
+      clientsImages {
+        image1 {
+          altText
+          sourceUrl
+        }
+        image2 {
+          altText
+          sourceUrl
+        }
+        image3 {
+          altText
+          sourceUrl
+        }
+        image4 {
+          altText
+          sourceUrl
+        }
+        image5 {
+          altText
+          sourceUrl
+        }
+        image6 {
+          altText
+          sourceUrl
+        }
+        image7 {
+          altText
+          sourceUrl
         }
       }
     }
