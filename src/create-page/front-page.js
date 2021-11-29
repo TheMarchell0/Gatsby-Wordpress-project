@@ -8,6 +8,7 @@ query GET_FRONT_PAGE {
     uri
     isFrontPage
     homeFields {
+      headerLogo
       heroSection {
         bookACall
         description
@@ -55,6 +56,89 @@ query GET_FRONT_PAGE {
           altText
           sourceUrl
         }
+      }
+      onePlatformSection {
+                title {
+                    firstRedText
+          secondBlackText
+        }
+        image {
+                    altText
+          sourceUrl
+        }
+        firstDescription
+        secondDescription
+      }
+      coreBusinessSection {
+                title
+        forRadioStationsBlock {
+                    title
+          description
+          buttonText
+        }
+        forBrandsBlock {
+                    title
+          description
+          buttonText
+        }
+      }
+      advantagesSection {
+                title
+        firstCard {
+                    title
+          image {
+                        altText
+            sourceUrl
+          }
+          firstDescription
+          secondDescription
+        }
+        secondCard {
+                    title
+          image {
+                        altText
+            sourceUrl
+          }
+          firstDescription
+          secondDescription
+        }
+        thirdCard {
+                    title
+          image {
+                        altText
+            sourceUrl
+          }
+          firstDescription
+          secondDescription
+        }
+      }
+      newFeatureSection {
+                headHashtag
+        title
+        firstDescription
+        firstImage {
+                    altText
+          sourceUrl
+        }
+        secondDescription
+        madeInText
+        secondImage {
+                    altText
+          sourceUrl
+        }
+      }
+      audioInfoSection {
+                image {
+                    altText
+          sourceUrl
+        }
+        firstDescription 
+        secondDescription
+      }
+      releaseSection {
+                title
+        description
+        buttonText
       }
     }
   }

@@ -7,6 +7,7 @@ export function useHeaderMenu() {
         id
         menuItems {
           items: nodes {
+            id
             label
             path
           }
